@@ -18,6 +18,7 @@ public class Main {
         int numberOfDice = 0;
         ArrayList<Die> myDice = new ArrayList<>();
         int dieReRoll;
+        String rerollDice = "Y";
 
 
 
@@ -51,5 +52,19 @@ public class Main {
         dieReRoll = input.nextInt();
 
         myDice.get(dieReRoll).dieRoll();
+
+        do {
+
+            out.println("Which die would you like to reroll? You have " + myDice.size());
+            dieReRoll = input.nextInt();
+
+            myDice.get(dieReRoll).dieRoll();
+
+            do{
+                out.println("Would you like to reroll a die? Y or N ");
+                rerollDice = input.next();
+            }while(!rerollDice.equals('y') || !rerollDice.equals('Y') || !rerollDice.equals('n') || !rerollDice.equals('Y'));
+
+        }while(rerollDice.equals('y') || !rerollDice.equals('Y'));
     }
 }
