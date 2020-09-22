@@ -17,6 +17,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int numberOfDice = 0;
         ArrayList<Die> myDice = new ArrayList<>();
+        int dieReRoll;
 
 
 
@@ -42,5 +43,13 @@ public class Main {
             }
 
         }
+
+        //reroll first die
+        myDice.get(0).dieRoll();
+
+        out.println("Which die would you like to reroll?");
+        dieReRoll = input.nextInt();
+
+        myDice.get(dieReRoll).dieRoll();
     }
 }

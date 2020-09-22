@@ -4,6 +4,7 @@ import java.util.Random;
 public class Die {
     private int dieSides;
     private Random randomNumber;
+    private int dieFace;
 
     public Die(){
         this.dieSides = 4;
@@ -19,7 +20,12 @@ public class Die {
 
     public int dieRoll(){
         randomNumber = new Random();
-        return randomNumber.nextInt((dieSides - 1) + 1) + 1;
+        dieFace = randomNumber.nextInt((dieSides - 1) + 1) + 1;
+        return dieFace;
 
+    }
+
+    public int getDieFace(){
+        return dieFace;
     }
 }
