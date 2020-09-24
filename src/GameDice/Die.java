@@ -1,5 +1,6 @@
 package GameDice;
 import java.util.Random;
+import java.util.ArrayList;
 
 public class Die {
     private int dieSides;
@@ -28,4 +29,9 @@ public class Die {
     public int getDieFace(){
         return dieFace;
     }
+
+    public boolean allDieMatch(ArrayList<Die> dice){
+        return dice.isEmpty() || dice.stream().allMatch(dice.get(0)::equals);
+    }
+
 }
