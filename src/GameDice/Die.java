@@ -30,8 +30,6 @@ public class Die {
         return dieFace;
     }
 
-    public boolean allDieMatch(ArrayList<Die> dice){
-        return dice.isEmpty() || dice.stream().allMatch(dice.get(0)::equals);
-    }
+
 
 }

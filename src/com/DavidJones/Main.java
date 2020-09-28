@@ -30,7 +30,8 @@ public class Main {
         for(int makeDice = 0; makeDice < numberOfDice; makeDice++){
 
             Die myDie = new Die();
-            //TimeUnit.SECONDS.sleep(2);
+
+            //delay creation, random will have different time seed
             try
             {
                 Thread.sleep(50);
@@ -48,12 +49,12 @@ public class Main {
         numberOfRolls = input.nextInt();
 
         //test rolls
-        for(int rolls = 0; rolls < numberOfRolls; rolls++){
+        /*for(int rolls = 0; rolls < numberOfRolls; rolls++){
             for(int dieNumber = 0; dieNumber < numberOfDice; dieNumber++){
                 out.println("This is die number " + dieNumber + " roll result " +myDice.get(dieNumber).dieRoll());
             }
 
-        }
+        }*/
 
         //reroll first die
         //myDice.get(0).dieRoll();
