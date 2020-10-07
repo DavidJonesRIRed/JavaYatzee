@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Die {
     private int dieSides;
-    private Random randomNumber;
+    private Random randomNumber = new Random();
     private int dieFace;
 
     public Die(){
@@ -20,10 +20,8 @@ public class Die {
     }
 
     public int dieRoll(){
-        randomNumber = new Random();
-        dieFace = randomNumber.nextInt((dieSides - 1) + 1) + 1;
+        dieFace = randomNumber.nextInt(dieSides) + 1;
         return dieFace;
-
     }
 
     public int getDieFace(){

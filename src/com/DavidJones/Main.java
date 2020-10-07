@@ -17,7 +17,6 @@ public class Main {
         int numberOfRolls = 0;
         Scanner input = new Scanner(System.in);
         int numberOfDice = 0;
-        ArrayList<Die> myDice = new ArrayList<>();
         int dieReRoll;
         String rerollDice = "Y";
 
@@ -27,21 +26,7 @@ public class Main {
         out.println("Please enter the number of Dice");
         numberOfDice = input.nextInt();
 
-        for(int makeDice = 0; makeDice < numberOfDice; makeDice++){
 
-            Die myDie = new Die();
-
-            //delay creation, random will have different time seed
-            try
-            {
-                Thread.sleep(50);
-            }
-            catch(InterruptedException ex)
-            {
-                Thread.currentThread().interrupt();
-            }
-            myDice.add(myDie);
-        }
 
 
         //out.println(myDie.getSides());
@@ -90,6 +75,6 @@ public class Main {
                 rerollDice = input.next();
             }while((rerollDice.equals("y") || rerollDice.equals("Y")) && (!rerollDice.equals("n") || !rerollDice.equals("N")));*/
 
-        }while(rerollDice.equals("y") || !rerollDice.equals("Y") );
+        }while(rerollDice.equals("y") || rerollDice.equals("Y") );
     }
 }
