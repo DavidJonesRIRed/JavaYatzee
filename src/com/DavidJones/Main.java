@@ -22,6 +22,7 @@ public class Main {
         ArrayList<Integer> whichDice;
 
         myHand.rollDice();
+        showDieFaces(myHand);
 
         do {
             if(myHand.checkYatzee()){
@@ -37,7 +38,7 @@ public class Main {
                 break;
             }
             else if(rerollDice.toLowerCase().equals("y")){
-                out.println("You have " + myHand.numberOfDice() + " Select dice for reroll. \\n Please die number like so 1 3 4");
+                out.println("You have " + myHand.numberOfDice() + " dice. Select dice for reroll. Please die number like so 1 3 4");
                 dieReRoll = input.next();
 
                 whichDice = new ArrayList<Integer>(sepDice(dieReRoll));
@@ -47,11 +48,6 @@ public class Main {
 
             showDieFaces(myHand);
 
-
-            /*do{
-                out.println("Would you like to reroll the current dice? Y or N ");
-                rerollDice = input.next();
-            }while((rerollDice.equals("y") || rerollDice.equals("Y")) && (!rerollDice.equals("n") || !rerollDice.equals("N")));*/
 
         }while(rerollDice.equals("y") || rerollDice.equals("Y") );
     }
@@ -65,7 +61,7 @@ public class Main {
         return theDice;
     }
 
-    private static void showDieFaces(ArrayList<Die> theHand){
+    private static void showDieFaces(Hand theHand){
         for(int dieNumber = 0; dieNumber < theHand.numberOfDice(); dieNumber++){
             out.println("This is die number " + (dieNumber + 1) + " roll result " + theHand.getDieSide(dieNumber));
         }

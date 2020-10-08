@@ -62,6 +62,6 @@ public class Hand {
     }
 
     public int getDieSide(int whichDie){
-        return = myDice.get(whichDie).getDieFace();
+        return myDice.get(whichDie).getDieFace();
     }
 }
