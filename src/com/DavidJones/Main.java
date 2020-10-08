@@ -1,6 +1,7 @@
 package com.DavidJones;
 
 import GameDice.Die;
+import Yatzee.Hand;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,62 +14,39 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         //variables
-        //Die myDie = new Die(6);
-        int numberOfRolls = 0;
         Scanner input = new Scanner(System.in);
-        int numberOfDice = 0;
-        int dieReRoll;
+        //int numberOfDice = 0;
+        String dieReRoll = "";
         String rerollDice = "Y";
+        Hand myHand = new Hand();
+        ArrayList<Integer> whichDice;
 
-
-
-
-        out.println("Please enter the number of Dice");
-        numberOfDice = input.nextInt();
-
-
-
-
-        //out.println(myDie.getSides());
-        out.println("Enter number of rolls");
-        numberOfRolls = input.nextInt();
-
-        //test rolls
-        /*for(int rolls = 0; rolls < numberOfRolls; rolls++){
-            for(int dieNumber = 0; dieNumber < numberOfDice; dieNumber++){
-                out.println("This is die number " + dieNumber + " roll result " +myDice.get(dieNumber).dieRoll());
-            }
-
-        }*/
-
-        //reroll first die
-        //myDice.get(0).dieRoll();
-
-        //out.println("Which die would you like to reroll?");
-        //dieReRoll = input.nextInt();
-
-        //5myDice.get(dieReRoll).dieRoll();
+        myHand.rollDice();
 
         do {
-            if(myDice.get(0).allDieMatch(myDice)){
+            if(myHand.checkYatzee()){
                 out.println("All dice match! Yatzee!!!!");
+                showDieFaces(myHand);
                 break;
             }
 
-            out.println("Which die would you like to reroll? Y/N");
+            out.println("Would you like to reroll? Y/N");
             rerollDice = input.next();
-            if (rerollDice.equals("N") || rerollDice.equals("n") ) {
+
+            if (rerollDice.toLowerCase().equals("n")) {
                 break;
             }
+            else if(rerollDice.toLowerCase().equals("y")){
+                out.println("You have " + myHand.numberOfDice() + " Select dice for reroll. \\n Please die number like so 1 3 4");
+                dieReRoll = input.next();
 
-            out.println("You have " + myDice.size() + " Select die for reroll.");
-            dieReRoll = input.nextInt();
+                whichDice = new ArrayList<Integer>(sepDice(dieReRoll));
 
-            myDice.get(dieReRoll).dieRoll();
-
-            for(int dieNumber = 0; dieNumber < numberOfDice; dieNumber++){
-                out.println("This is die number " + dieNumber + " roll result " +myDice.get(dieNumber).getDieFace());
+                myHand.reRollDice(whichDice);
             }
+
+            showDieFaces(myHand);
+
 
             /*do{
                 out.println("Would you like to reroll the current dice? Y or N ");
@@ -77,4 +55,22 @@ public class Main {
 
         }while(rerollDice.equals("y") || rerollDice.equals("Y") );
     }
+
+    private static ArrayList<Integer> sepDice(String dieToRoll) {
+        String dice[] = dieToRoll.split("");
+        ArrayList<Integer> theDice = new ArrayList<Integer>();
+        for (String die : dice) {
+            theDice.add(Integer.parseInt(die));
+        }
+        return theDice;
+    }
+
+    private static void showDieFaces(ArrayList<Die> theHand){
+        for(int dieNumber = 0; dieNumber < theHand.numberOfDice(); dieNumber++){
+            out.println("This is die number " + (dieNumber + 1) + " roll result " + theHand.getDieSide(dieNumber));
+        }
+    }
+
 }
+
+
